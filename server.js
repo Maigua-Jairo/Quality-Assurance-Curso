@@ -48,8 +48,7 @@ const travellers = function (req, res) {
       case 'verrazzano':
         data = {
           name: 'Giovanni',
-          surname: 'da Verrazzano',
-          dates: '1485 - 1528'
+          surname: 'da Verrazzano'
         };
         break;
       default:

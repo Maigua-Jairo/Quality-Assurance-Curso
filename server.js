@@ -23,41 +23,32 @@ const travellers = function (req, res) {
   let data = {};
   if (req.body && req.body.surname) {
     switch (req.body.surname.toLowerCase()) {
-      case 'polo':
-        data = {
-          name: 'Marco',
-          surname: 'Polo',
-          dates: '1254 - 1324'
-        };
-        break;
       case 'colombo':
         data = {
           name: 'Cristoforo',
-          surname: 'Colombo',
-          dates: '1451 - 1506'
+          surname: 'Colombo'
         };
         break;
       case 'vespucci':
         data = {
           name: 'Amerigo',
-          surname: 'Vespucci',
-          dates: '1454 - 1512'
+          surname: 'Vespucci'
         };
         break;
       case 'da verrazzano':
+      case 'verrazzano':
         data = {
           name: 'Giovanni',
           surname: 'da Verrazzano'
         };
         break;
       default:
-        data = {
-          name: 'unknown'
-        }
+        data = { name: 'unknown' };
     }
   }
   res.json(data);
 };
+
 
 
 app.route('/travellers')

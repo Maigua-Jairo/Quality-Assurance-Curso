@@ -45,7 +45,6 @@ const travellers = function (req, res) {
         };
         break;
       case 'da verrazzano':
-      case 'verrazzano':
         data = {
           name: 'Giovanni',
           surname: 'da Verrazzano'

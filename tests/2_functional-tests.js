@@ -58,33 +58,33 @@ suite('Functional Tests', function () {
           done();
         });
     });
-// #4
+    // #4
     test('Send {surname: "da Verrazzano"}', function (done) {
       chai
-       .request(server)
-       .keepOpen()
-       .put('/travellers')
-       .send({ surname: 'da Verrazzano' })
-       .end(function (err, res) {
-         assert.equal(res.status, 200, 'response status should be 200');
-         assert.equal(res.type, 'application/json', 'Response should be json');
-         assert.equal(res.body.name, 'Giovanni', 'res.body.name should be "Giovanni"');
-         assert.equal(res.body.surname, 'da Verrazzano', 'res.body.surname should be "da Verrazzano"');
-         done();
-       });   
-    });     
-  });      
-});         
+        .request(server)
+        .keepOpen()
+        .put('/travellers')
+        .send({ surname: 'da Verrazzano' })
+        .end(function (err, res) {
+          assert.equal(res.status, 200, 'response status should be 200');
+          assert.equal(res.type, 'application/json', 'Response should be json');
+          assert.equal(res.body.name, 'Giovanni', 'res.body.name should be "Giovanni"');
+          assert.equal(res.body.surname, 'da Verrazzano', 'res.body.surname should be "da Verrazzano"');
+          done();
+        });
+    });
+  });
+});
 
 const Browser = require('zombie');
- Browser.site = 'https://quality-assurance-curso.onrender.com/';
+Browser.site = 'https://quality-assurance-curso.onrender.com/';
 suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);
- const browser = new Browser();
+  const browser = new Browser();
 
-suiteSetup(function(done) {
-  return browser.visit('/', done);
-});
+  suiteSetup(function (done) {
+    return browser.visit('/', done);
+  });
   suite('Headless browser', function () {
     test('should have a working "site" property', function () {
       assert.isNotNull(browser.site);
@@ -94,19 +94,18 @@ suiteSetup(function(done) {
   suite('"Famous Italian Explorers" form', function () {
     // #5
     test('Submit the surname "Colombo" in the HTML form', function (done) {
-   browser.fill('surname', 'Colombo').then(() => {
-    browser.pressButton('submit', () => {
-      browser.assert.success();
-      browser.assert.text('span#name', 'Cristoforo');
-      browser.assert.text('span#surname', 'Colombo');
-      browser.assert.elements('span#dates', 1);
-      done();
+      browser.fill('surname', 'Colombo').then(() => {
+        browser.pressButton('submit', () => {
+          browser.assert.success();
+          browser.assert.text('span#name', 'Cristoforo');
+          browser.assert.text('span#surname', 'Colombo');
+          browser.assert.elements('span#dates', 1);
+          done();
+        });
+      });
     });
-  });
 
 
-      done();
-    });
     // #6
     test('Submit the surname "Vespucci" in the HTML form', function (done) {
       assert.fail();

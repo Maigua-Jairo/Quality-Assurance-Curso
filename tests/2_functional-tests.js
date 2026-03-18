@@ -39,9 +39,21 @@ suite('Functional Tests', function () {
         .request(server)
         .keepOpen()
         .put('/travellers')
-
+        .send({ surname: 'Colombo' })
         .end(function (err, res) {
-          assert.fail();
+          assert.equal(res.status, 200, 'response status should be 200');
+          assert.equal(res.type, 'application/json', 'Response should be json');
+          assert.equal(
+            res.body.name,
+            'Cristoforo',
+            'res.body.name should be "Christoforo"'
+          );
+          assert.equal(
+            res.body.surname,
+            'Colombo',
+            'res.body.surname should be "Colombo"'
+          );
+
 
           done();
         });
@@ -63,7 +75,7 @@ suite('Functional Tests with Zombie.js', function () {
 
 
   suite('Headless browser', function () {
-    test('should have a working "site" property', function() {
+    test('should have a working "site" property', function () {
       assert.isNotNull(browser.site);
     });
   });
